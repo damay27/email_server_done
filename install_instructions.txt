@@ -1,13 +1,15 @@
-1. Install libcurlpp-dev
-2. Install libsodium
+1. Run sudo apt-get update
+2. Install libcurl4-gnutls-dev
+3. Install libsodium
   *Make a new sub-directory
-  *Run the command 
-      wget https://download.libsodium.org/libsodium/releases/libsodium-stable-2018-11-28.tar.gz
+  *Go to https://download.libsodium.org/libsodium/releases/ and download the stable release
   *Follow the instructions here to install the library
-      https://libsodium.gitbook.io/doc/installation
+      tar xvzf
   *Open the file /etc/ld.so.conf
   *Add /usr/local/lib to the end of this file
   *Clone the gitHub repo at
       https://github.com/damay27/email_server.git
-  *Run make all
-  *Run make get_structure
+4. Run make all in the email server directory
+5. Run make folders in the email server directory
+6. Change the content of baseURL to be the url of your workspace
+7. Run "service apache2 start"
