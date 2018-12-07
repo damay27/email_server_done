@@ -14,4 +14,5 @@
 6. Change the content of baseURL to be the url of your workspace
 7. Modify /etc/apache2/conf-available/serve-cgi-bin.conf to use the email server folder in the workspace
    for cgi scripts.
-8. Run "service apache2 start"
+8. Run "sudo a2enmod cgi"
+9. Run "service apache2 start"
