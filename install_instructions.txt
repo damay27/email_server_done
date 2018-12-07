@@ -1,0 +1,13 @@
+1. Install libcurlpp-dev
+2. Install libsodium
+  *Make a new sub-directory
+  *Run the command 
+      wget https://download.libsodium.org/libsodium/releases/libsodium-stable-2018-11-28.tar.gz
+  *Follow the instructions here to install the library
+      https://libsodium.gitbook.io/doc/installation
+  *Open the file /etc/ld.so.conf
+  *Add /usr/local/lib to the end of this file
+  *Clone the gitHub repo at
+      https://github.com/damay27/email_server.git
+  *Run make all
+  *Run make get_structure
