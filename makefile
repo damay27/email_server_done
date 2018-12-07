@@ -69,3 +69,4 @@ clean:
 folders:
 	mkdir dat
 	mkdir dat/msg
+	touch dat/Users
