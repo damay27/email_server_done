@@ -2,6 +2,7 @@
 #include <string>
 #include "curl/curl.h"
 #include "helperFunctions.hpp"
+#include <fstream>
 
 using namespace std;
 
@@ -12,9 +13,16 @@ bool printUsers();
 bool readMsgs();
 bool ckeckMsgs();
 
+string baseURL;
+
  
 int main()
 {
+  
+  ifstream baseURLFile;
+  baseURLFile.open("baseURL");
+  getline(baseURLFile, baseURL);
+  baseURLFile.close();
   
   curl_global_init(CURL_GLOBAL_ALL);
   
@@ -124,7 +132,7 @@ bool addUser()
   if(curl)
   {
     //Point the the end point
-    curl_easy_setopt(curl, CURLOPT_URL, "https://email-server-damay.c9users.io/addUser.cgi");
+    curl_easy_setopt(curl, CURLOPT_URL, (baseURL+"addUser.cgi").c_str());
     
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());    
     
@@ -180,7 +188,7 @@ bool sendMsg()
   //If curl was setup correctly send the POST request and wait for a response
   if(curl)
   {
-    curl_easy_setopt(curl, CURLOPT_URL, "https://email-server-damay.c9users.io/receiveMessage.cgi");
+    curl_easy_setopt(curl, CURLOPT_URL, (baseURL+"receiveMessage.cgi").c_str());
     
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());    
     
@@ -213,7 +221,7 @@ bool printUsers()
   //If curl was setup correctly send the POST request and wait for a response
   if(curl)
   {
-    curl_easy_setopt(curl, CURLOPT_URL, "https://email-server-damay.c9users.io/printUsers.cgi");
+    curl_easy_setopt(curl, CURLOPT_URL, (baseURL+"printUsers.cgi").c_str());
     
     res = curl_easy_perform(curl);
     
@@ -262,7 +270,7 @@ bool readMsgs()
   //If curl was setup correctly send the POST request and wait for a response
   if(curl)
   {
-    curl_easy_setopt(curl, CURLOPT_URL, "https://email-server-damay.c9users.io/returnMessages.cgi");
+    curl_easy_setopt(curl, CURLOPT_URL, (baseURL+"returnMessages.cgi").c_str());
     
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());  
 
@@ -307,7 +315,7 @@ bool ckeckMsgs()
   //If curl was setup correctly send the POST request and wait for a response
   if(curl)
   {
-    curl_easy_setopt(curl, CURLOPT_URL, "https://email-server-damay.c9users.io/checkMessages.cgi");
+    curl_easy_setopt(curl, CURLOPT_URL, (baseURL+"checkMessages.cgi").c_str());
     
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());  
 
