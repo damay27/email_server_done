@@ -12,4 +12,6 @@
 4. Run make all in the email server directory
 5. Run make folders in the email server directory
 6. Change the content of baseURL to be the url of your workspace
-7. Run "service apache2 start"
+7. Modify /etc/apache2/conf-available/serve-cgi-bin.conf to use the email server folder in the workspace
+   for cgi scripts.
+8. Run "service apache2 start"
