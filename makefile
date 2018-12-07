@@ -66,6 +66,6 @@ clean:
 	checkMessages.cgi checkMessages.o
 	
 	
-get_structure:
+gen_structure:
 	mkdir dat
 	mkdir dat/msg
