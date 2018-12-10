@@ -1,6 +1,6 @@
 1. Run sudo apt-get update
-2. Install libcurl4-gnutls-dev
-3. Install libsodium
+2. Install libcurl4-gnutls-dev using apt
+3. Install steps for libsodium
   *Make a new sub-directory
   *Go to https://download.libsodium.org/libsodium/releases/ and download the stable release
   *Follow the instructions here to install the library
