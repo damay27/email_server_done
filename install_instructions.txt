@@ -3,13 +3,14 @@
 3. Install steps for libsodium
   *Make a new sub-directory
   *Go to https://download.libsodium.org/libsodium/releases/ and download the stable release
-  *Follow the instructions here to install the library
+  *Follow the instructions here to install the library https://libsodium.gitbook.io/doc/installation
   *Open the file /etc/ld.so.conf
   *Add /usr/local/lib to the end of this file
+  *Run "sudo ldconfig"
 4. Run "make all" in the email server directory
 5. Run "make folders" in the email server directory
 6. Change the content of the baseURL file to be the url of your workspace
 7. Modify /etc/apache2/conf-available/serve-cgi-bin.conf to use the email server folder in the workspace
    for cgi scripts.
 8. Run "sudo a2enmod cgi"
-9. Run "service apache2 start"
+9. Run "service apache2 start" or "service apache2 restart"
