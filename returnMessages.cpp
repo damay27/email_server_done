@@ -59,6 +59,7 @@ int main() {
         }
         catch (exception e) {
             cout<<"Invalid input error."<<endl;
+            cout<<msgNumberStr<<endl;
             return -1;
         }
         
@@ -74,7 +75,19 @@ int main() {
         
         //Only keep the portion of the message that comes after the colon
         int colonIndex = msg.find(":");
-        msg = msg.substr(colonIndex+1);
+        string hexStr = msg.substr(colonIndex+1);
+        
+        
+        msg = "";
+        
+        
+        for(int i = 0; i<hexStr.size(); i+=2)
+        {
+            string hexChar = "";
+            hexChar += hexStr.at(i);
+            hexChar+=hexStr.at(i+1);
+            msg += (const char)stoi(hexChar, nullptr, 16);
+        }
         
         //Decrypt the message
         msg = cryptString(msg, key);

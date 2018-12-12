@@ -49,6 +49,7 @@ int main()
       cout<<"    read"<<endl;
       cout<<"    printUsers"<<endl;
       cout<<"    checkMsgs"<<endl;
+      cout<<"    exit"<<endl;
     }
     else if(command == "addUser")
     {
@@ -168,13 +169,13 @@ bool sendMsg()
   cin>>password;
   cout<<"Enter who you want to send to: "<<endl;
   cin>>receiveUser;
-  cout<<"Enter your key: "<<endl;
+  cout<<"Enter your key (must be a single word): "<<endl;
   cin>>key;
   cout<<"Enter your message: "<<endl;
   
   //This is needed to get rid of the newline after the the cin that is still in the buffer
   //If you don't do this getline will end immediatly without letting you type anything.
-  cin.ignore();
+  cin.ignore(256,'\n');
   getline(cin, message);
   
   //Format the data into a single string seperated by newline characters
@@ -251,7 +252,7 @@ bool readMsgs()
   cin>>userName;
   cout<<"Enter your password: "<<endl;
   cin>>password;
-  cout<<"Enter your key: "<<endl;
+  cout<<"Enter your key (must be a single word): "<<endl;
   cin>>key;
   cout<<"Enter the number of the message you want to read: "<<endl;
   cin>>msgNumber;

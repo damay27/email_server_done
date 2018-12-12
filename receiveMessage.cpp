@@ -3,6 +3,7 @@
 #include <fstream>
 #include "helperFunctions.hpp"
 #include <ctime>
+#include <sstream>
 using namespace std;
 
 /*
@@ -47,6 +48,12 @@ int main() {
     }
 
 
+    if(key.size()>=message.size())
+    {
+        cout<<"Key must be shorter than message."<<endl;
+        return -1;
+    }
+
     //Make sure the user is who they say they are
     bool authOK = authUser(userName, password);
     
@@ -59,7 +66,6 @@ int main() {
         //Look for the receiving user in the list of users 
         bool foundUser = findUser(receiveUser);
         
-        
         //If the user being sent the message was found
         if(foundUser)
         {
@@ -70,12 +76,38 @@ int main() {
             //Encrypt the message
             message = cryptString(message, key);
             
+            stringstream stream;
+            for(int i = 0; i<message.size(); i++)
+            {
+                stringstream tmp;
+                tmp << hex << (int)message.at(i);
+
+                if(tmp.str().length()>2)
+                {
+                    stream<<tmp.str().substr( tmp.str().length() - 2 );
+                }
+                else if(tmp.str().length()==1)
+                {
+                    stream<<"0"+tmp.str();
+                }
+                else
+                {
+                    stream<<tmp.str();
+                }
+
+            }
+            
+            
+            message = stream.str();
+            
+            
             //Add who the message is from and what time it was sent to the front
             //of the message. This is seperated from the encrypted message by 
             //a ':' character
             message = "From " + userName + " at Unix time stamp " + to_string(time(NULL)) + ":" + message + '\n';
-            
             outFile << message;
+
+            // cout<<message<<endl;
 
             cout<<"Message sent."<<endl;
         }

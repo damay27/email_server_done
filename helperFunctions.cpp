@@ -112,7 +112,6 @@ string cryptString(string msg, string key)
     
     crypto_stream_salsa20_xor( (unsigned char*)output.c_str(), (const unsigned char*)msg.c_str(), msg.size(), NONCE, (const unsigned char*)key.c_str());
     
-    
     return output;
 }
 
