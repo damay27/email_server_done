@@ -107,6 +107,8 @@ string cryptString(string msg, string key)
 {
     const unsigned char NONCE[21] = "1EJzaaK9LVYCGO2XXrQ3";
     
+    key = key + string(32-key.size(), '0');
+    
     string output;
     output.resize(msg.size());
     
