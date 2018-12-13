@@ -178,6 +178,12 @@ bool sendMsg()
   cin.ignore(256,'\n');
   getline(cin, message);
   
+  if(key.size()>32)
+  {
+    cout<<"Key cannot be larger than 256 bits."<<endl;
+    return false;
+  }
+  
   //Format the data into a single string seperated by newline characters
   data = userName + '\n' + password + '\n' + receiveUser + '\n' + key + '\n' + message;
   
@@ -257,6 +263,12 @@ bool readMsgs()
   cout<<"Enter the number of the message you want to read: "<<endl;
   cin>>msgNumber;
   cout.clear();
+  
+  if(key.size()>32)
+  {
+    cout<<"Key cannot be larger than 256 bits."<<endl;
+    return false;
+  }
 
 
   //Combine all the user input into one data string
