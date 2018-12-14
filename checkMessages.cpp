@@ -46,9 +46,13 @@ int main() {
             {
                 string line;
                 getline(file, line);
-                int colonIndex = line.find(":");
-                cout<<lineNumber<<". "<<line.substr(0, colonIndex)<<endl;
-                lineNumber++;
+                
+                if(line.find(":") != string::npos)
+                {
+                    int colonIndex = line.find(":");
+                    cout<<lineNumber<<". "<<line.substr(0, colonIndex)<<endl;
+                    lineNumber++;
+                }
             }
 
         
